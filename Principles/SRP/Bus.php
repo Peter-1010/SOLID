@@ -8,9 +8,8 @@ class Bus
     private int $numberOfPassengers;
     private string $color;
     private int $maximumSpeed;
-    private string $driverName;
-    private int $driverAge;
     private int $doors;
+    private Driver $driver;
     private array $routes;
 
     /**
@@ -86,38 +85,6 @@ class Bus
     }
 
     /**
-     * @return string
-     */
-    public function getDriverName(): string
-    {
-        return $this->driverName;
-    }
-
-    /**
-     * @param string $driverName
-     */
-    public function setDriverName(string $driverName): void
-    {
-        $this->driverName = $driverName;
-    }
-
-    /**
-     * @return int
-     */
-    public function getDriverAge(): int
-    {
-        return $this->driverAge;
-    }
-
-    /**
-     * @param int $driverAge
-     */
-    public function setDriverAge(int $driverAge): void
-    {
-        $this->driverAge = $driverAge;
-    }
-
-    /**
      * @return int
      */
     public function getDoors(): int
@@ -134,6 +101,22 @@ class Bus
     }
 
     /**
+     * @return Driver
+     */
+    public function getDriver(): Driver
+    {
+        return $this->driver;
+    }
+
+    /**
+     * @param Driver $driver
+     */
+    public function setDriver(Driver $driver): void
+    {
+        $this->driver = $driver;
+    }
+
+    /**
      * @return array
      */
     public function getRoutes(): array
@@ -142,21 +125,11 @@ class Bus
     }
 
     /**
-     * @param array $routes
+     * @param Route $routes
      */
-    public function setRoutes(array $routes): void
+    public function addRoutes(Route $routes): void
     {
-        $this->routes = $routes;
-    }
-
-    /**
-     * @param string $from from destination
-     * @param string $to to destination
-     * @return string output
-     */
-    public function driverToRoute(string $from, string $to): string
-    {
-        return "The bus is moving from $from to $to";
+        $this->routes[] = $routes;
     }
 
     /**
@@ -165,6 +138,13 @@ class Bus
     public function doMaintenance(): string
     {
         return 'The bus is doing maintenance right now';
+    }
+
+    public function move(): void
+    {
+        foreach ($this->getRoutes() as $route){
+           echo "<p style='color: red; font-size: 30px; font-weight: bold'>From {$route->getSource()} To {$route->getDestination()}</p>";
+        }
     }
 
 }
