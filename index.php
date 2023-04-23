@@ -12,4 +12,4 @@ $bus->setDoors(3);
 $bus->setMaximumSpeed(100);
 $bus->setNumberOfPassengers(62);
 
-var_dump($bus->getMaximumSpeed());
+var_dump($bus->driverToRoute('El Minya', 'Aswan'));

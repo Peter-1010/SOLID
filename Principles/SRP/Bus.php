@@ -149,6 +149,22 @@ class Bus
         $this->routes = $routes;
     }
 
+    /**
+     * @param string $from from destination
+     * @param string $to to destination
+     * @return string output
+     */
+    public function driverToRoute(string $from, string $to): string
+    {
+        return "The bus is moving from $from to $to";
+    }
 
+    /**
+     * @return string
+     */
+    public function doMaintenance(): string
+    {
+        return 'The bus is doing maintenance right now';
+    }
 
 }
